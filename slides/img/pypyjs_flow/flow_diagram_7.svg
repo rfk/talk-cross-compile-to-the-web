@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="32cm" height="21cm" viewBox="125 80 631 403" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2.35099e-37; stroke: #000000" x="125.3" y="80.2" width="630.7" height="402.8"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="466.3" y="350.45">
+    <tspan x="466.3" y="350.45"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="135.3" y="166.45" width="87" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="135.3" y="166.45" width="87" height="44"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="152.3" y="189.95">
+    <tspan x="152.3" y="189.95">PyPy.py</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="268.6" y="165.75" width="87" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="268.6" y="165.75" width="87" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="291.6" y="191.25">
+    <tspan x="291.6" y="191.25">PyPy.c</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="380.3" y="199.45">
+    <tspan x="380.3" y="199.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="404.3" y="196.45">
+    <tspan x="404.3" y="196.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="313.1" y="187.474">
+    <tspan x="313.1" y="187.474"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="419.45" y="366.75">
+    <tspan x="419.45" y="366.75"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="317.6" y="261.974">
+    <tspan x="317.6" y="261.974"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="699.45" y="365.75">
+    <tspan x="699.45" y="365.75"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="446" y="300">
+    <tspan x="446" y="300"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="478.3" y="111.45">
+    <tspan x="478.3" y="111.45"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="402.6" y="166.75" width="87" height="40.45"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="402.6" y="166.75" width="87" height="40.45"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="419.6" y="191.25">
+    <tspan x="419.6" y="191.25">PyPy.js</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="446.1" y="186.976">
+    <tspan x="446.1" y="186.976"></tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 282.367,156.79 A 48.5233,48.5233 0 0 0 203.3,163.45"/>
+    <polygon style="fill: #000000" points="285.113,160.305 279.385,156.813 282.724,156.491 284.47,153.628 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="285.113,160.305 279.385,156.813 282.724,156.491 284.47,153.628 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="221.8" y="130.95">
+    <tspan x="221.8" y="130.95">rpython</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 417.275,158.848 A 53.3447,53.3447 0 0 0 334.3,161.2"/>
+    <polygon style="fill: #000000" points="420.071,162.332 414.267,158.969 417.597,158.573 419.279,155.671 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="420.071,162.332 414.267,158.969 417.597,158.573 419.279,155.671 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="430.3" y="123.45">
+    <tspan x="430.3" y="123.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="358.1" y="130.25">
+    <tspan x="358.1" y="130.25">emcc</tspan>
+  </text>
+  <g>
+    <path style="fill: #ffffff" d="M 552.121 148.15 L 629.263,148.15 L 644.692,183.15 L 629.263,218.15 L 552.121,218.15 L 536.692,183.15 L 552.121,148.15z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.121 148.15 L 629.263,148.15 L 644.692,183.15 L 629.263,218.15 L 552.121,218.15 L 536.692,183.15 L 552.121,148.15"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="590.692" y="187.15">
+      <tspan x="590.692" y="187.15"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="558.292" y="186.15">
+    <tspan x="558.292" y="186.15">BROWSER</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 539.356,151.564 A 43.153,43.153 0 0 0 467.634,161.172"/>
+    <polygon style="fill: #000000" points="542.122,155.049 536.412,151.529 539.752,151.224 541.512,148.369 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="542.122,155.049 536.412,151.529 539.752,151.224 541.512,148.369 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="541.618" y="226.368">
+    <tspan x="541.618" y="226.368">JIT</tspan>
+  </text>
+</svg>

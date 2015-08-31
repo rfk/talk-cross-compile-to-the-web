@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="32cm" height="21cm" viewBox="125 80 631 403" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2.35099e-37; stroke: #000000" x="125.3" y="80.2" width="630.7" height="402.8"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="466.3" y="350.45">
+    <tspan x="466.3" y="350.45"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="135.3" y="166.45" width="87" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="135.3" y="166.45" width="87" height="44"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="152.3" y="189.95">
+    <tspan x="152.3" y="189.95">PyPy.py</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="268.6" y="165.75" width="87" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="268.6" y="165.75" width="87" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="291.6" y="191.25">
+    <tspan x="291.6" y="191.25">PyPy.c</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="380.3" y="199.45">
+    <tspan x="380.3" y="199.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="404.3" y="196.45">
+    <tspan x="404.3" y="196.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="313.1" y="187.474">
+    <tspan x="313.1" y="187.474"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="419.45" y="366.75">
+    <tspan x="419.45" y="366.75"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="317.6" y="261.974">
+    <tspan x="317.6" y="261.974"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="699.45" y="365.75">
+    <tspan x="699.45" y="365.75"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="345.3" y="287.75" width="106.3" height="34.45"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="345.3" y="287.75" width="106.3" height="34.45"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="369.9" y="307.55">
+    <tspan x="369.9" y="307.55">PyPy.x86</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="446" y="300">
+    <tspan x="446" y="300"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="457.3" y="411.45" width="98" height="32"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="457.3" y="411.45" width="98" height="32"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="467.6" y="432.25">
+    <tspan x="467.6" y="432.25">mycode.py</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="478.3" y="111.45">
+    <tspan x="478.3" y="111.45"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="402.6" y="166.75" width="87" height="40.45"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="402.6" y="166.75" width="87" height="40.45"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="419.6" y="191.25">
+    <tspan x="419.6" y="191.25">PyPy.js</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="446.1" y="186.976">
+    <tspan x="446.1" y="186.976"></tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 282.367,156.79 A 48.5233,48.5233 0 0 0 203.3,163.45"/>
+    <polygon style="fill: #000000" points="285.113,160.305 279.385,156.813 282.724,156.491 284.47,153.628 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="285.113,160.305 279.385,156.813 282.724,156.491 284.47,153.628 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="221.8" y="130.95">
+    <tspan x="221.8" y="130.95">rpython</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 417.275,158.848 A 53.3447,53.3447 0 0 0 334.3,161.2"/>
+    <polygon style="fill: #000000" points="420.071,162.332 414.267,158.969 417.597,158.573 419.279,155.671 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="420.071,162.332 414.267,158.969 417.597,158.573 419.279,155.671 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 522.3,216.45 A 143.181,143.181 0 0 0 402.961,272.559"/>
+    <polygon style="fill: #000000" points="400.273,276.162 401.223,269.521 402.835,272.462 406.156,272.937 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="400.273,276.162 401.223,269.521 402.835,272.462 406.156,272.937 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="430.3" y="123.45">
+    <tspan x="430.3" y="123.45"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="358.1" y="130.25">
+    <tspan x="358.1" y="130.25">emcc</tspan>
+  </text>
+  <g>
+    <path style="fill: #ffffff" d="M 552.121 148.15 L 629.263,148.15 L 644.692,183.15 L 629.263,218.15 L 552.121,218.15 L 536.692,183.15 L 552.121,148.15z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.121 148.15 L 629.263,148.15 L 644.692,183.15 L 629.263,218.15 L 552.121,218.15 L 536.692,183.15 L 552.121,148.15"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="590.692" y="187.15">
+      <tspan x="590.692" y="187.15"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="558.292" y="186.15">
+    <tspan x="558.292" y="186.15">BROWSER</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 539.356,151.564 A 43.153,43.153 0 0 0 467.634,161.172"/>
+    <polygon style="fill: #000000" points="542.122,155.049 536.412,151.529 539.752,151.224 541.512,148.369 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="542.122,155.049 536.412,151.529 539.752,151.224 541.512,148.369 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 552.118 189.167 C 552.118,205.417 568.368,205.417 576.493,197.292 C 568.368,205.417 568.368,221.667 584.618,221.667 C 568.368,221.667 568.368,237.917 576.493,246.042 C 568.368,237.917 552.118,237.917 552.118,254.167 C 552.118,237.917 535.868,237.917 527.743,246.042 C 535.868,237.917 535.868,221.667 519.618,221.667 C 535.868,221.667 535.868,205.417 527.743,197.292 C 535.868,205.417 552.118,205.417 552.118,189.167"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="541.618" y="226.368">
+    <tspan x="541.618" y="226.368">JIT</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 656.842,329.337 A 64.9184,64.9184 0 0 0 593,340"/>
+    <polygon style="fill: #000000" points="660.996,331.008 654.288,331.034 656.964,329.011 656.951,325.657 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="660.996,331.008 654.288,331.034 656.964,329.011 656.951,325.657 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 504.821 277.2 L 581.963,277.2 L 597.392,312.2 L 581.963,347.2 L 504.821,347.2 L 489.392,312.2 L 504.821,277.2z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 504.821 277.2 L 581.963,277.2 L 597.392,312.2 L 581.963,347.2 L 504.821,347.2 L 489.392,312.2 L 504.821,277.2"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="543.392" y="316.2">
+      <tspan x="543.392" y="316.2"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="533.992" y="315.2">
+    <tspan x="533.992" y="315.2">OS</tspan>
+  </text>
+  <g>
+    <path style="fill: #ffffff" d="M 568.818 315.218 C 568.818,331.468 585.068,331.468 593.193,323.343 C 585.068,331.468 585.068,347.718 601.318,347.718 C 585.068,347.718 585.068,363.968 593.193,372.093 C 585.068,363.968 568.818,363.968 568.818,380.218 C 568.818,363.968 552.568,363.968 544.443,372.093 C 552.568,363.968 552.568,347.718 536.318,347.718 C 552.568,347.718 552.568,331.468 544.443,323.343 C 552.568,331.468 568.818,331.468 568.818,315.218z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 568.818 315.218 C 568.818,331.468 585.068,331.468 593.193,323.343 C 585.068,331.468 585.068,347.718 601.318,347.718 C 585.068,347.718 585.068,363.968 593.193,372.093 C 585.068,363.968 568.818,363.968 568.818,380.218 C 568.818,363.968 552.568,363.968 544.443,372.093 C 552.568,363.968 552.568,347.718 536.318,347.718 C 552.568,347.718 552.568,331.468 544.443,323.343 C 552.568,331.468 568.818,331.468 568.818,315.218"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 568.818 315.218 C 568.818,331.468 585.068,331.468 593.193,323.343 C 585.068,331.468 585.068,347.718 601.318,347.718 C 585.068,347.718 585.068,363.968 593.193,372.093 C 585.068,363.968 568.818,363.968 568.818,380.218 C 568.818,363.968 552.568,363.968 544.443,372.093 C 552.568,363.968 552.568,347.718 536.318,347.718 C 552.568,347.718 552.568,331.468 544.443,323.343 C 552.568,331.468 568.818,331.468 568.818,315.218"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="562.678" y="352.2">
+    <tspan x="562.678" y="352.2">JIT</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="635.3" y="344.2" width="98" height="32"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="635.3" y="344.2" width="98" height="32"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="647.6" y="364">
+    <tspan x="647.6" y="364">mycode.js</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 500.733,271.921 A 43.9088,43.9088 0 0 0 428.354,282.848"/>
+    <polygon style="fill: #000000" points="503.591,275.333 497.784,271.976 501.114,271.576 502.793,268.673 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="503.591,275.333 497.784,271.976 501.114,271.576 502.793,268.673 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 520.925,353.13 A 136.359,136.359 0 0 0 506.3,411.45"/>
+    <polygon style="fill: #000000" points="523.002,349.143 522.642,355.842 520.776,353.055 517.427,352.874 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="523.002,349.143 522.642,355.842 520.776,353.055 517.427,352.874 "/>
+  </g>
+</svg>

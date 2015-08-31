@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="35cm" height="17cm" viewBox="171 103 697 335" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2.35099e-37; stroke: #000000" x="171" y="103.75" width="697" height="334.25"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="704" y="402">
+    <tspan x="704" y="402"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="221.3" y="189.3" width="100.7" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="221.3" y="189.3" width="100.7" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="240.3" y="214.8">
+    <tspan x="240.3" y="214.8">mycode.c</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="333" y="223">
+    <tspan x="333" y="223"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="647" y="220">
+    <tspan x="647" y="220"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="562.65" y="211.025">
+    <tspan x="562.65" y="211.025"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="657.15" y="403.3">
+    <tspan x="657.15" y="403.3"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="652.15" y="403.3">
+    <tspan x="652.15" y="403.3"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="561" y="135">
+    <tspan x="561" y="135"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="700.15" y="210.526">
+    <tspan x="700.15" y="210.526"></tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 369.975,180.398 A 53.3447,53.3447 0 0 0 287,182.75"/>
+    <polygon style="fill: #000000" points="372.771,183.882 366.967,180.519 370.297,180.123 371.979,177.221 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="372.771,183.882 366.967,180.519 370.297,180.123 371.979,177.221 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="673" y="147">
+    <tspan x="673" y="147"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="316.6" y="151">
+    <tspan x="316.6" y="151">emcc</tspan>
+  </text>
+  <g>
+    <path style="fill: #ffffff" d="M 699.429 146 L 791.571,146 L 810,216 L 791.571,286 L 699.429,286 L 681,216 L 699.429,146z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 699.429 146 L 791.571,146 L 810,216 L 791.571,286 L 699.429,286 L 681,216 L 699.429,146"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="745.5" y="220">
+      <tspan x="745.5" y="220"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="709.6" y="177">
+    <tspan x="709.6" y="177">BROWSER</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="355" y="190.3" width="117" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="355" y="190.3" width="117" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="361" y="215.8">
+    <tspan x="361" y="215.8">mycode.wasm</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 563.73,178.824 A 96.619,96.619 0 0 0 445.034,181.95"/>
+    <polygon style="fill: #000000" points="567.297,181.551 560.783,179.948 563.87,178.635 564.671,175.378 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="567.297,181.551 560.783,179.948 563.87,178.635 564.671,175.378 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="734" y="203" width="62" height="24"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="734" y="203" width="62" height="24"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="695.3" y="203.2" width="99.7" height="24"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="695.3" y="203.2" width="99.7" height="24"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="708.3" y="219.1">
+    <tspan x="708.3" y="219.1">JavaScript</tspan>
+  </text>
+  <g>
+    <path style="fill: #ffffff" d="M 747.75 228 C 747.75,244.625 764.375,244.625 772.688,236.312 C 764.375,244.625 764.375,261.25 781,261.25 C 764.375,261.25 764.375,277.875 772.688,286.188 C 764.375,277.875 747.75,277.875 747.75,294.5 C 747.75,277.875 731.125,277.875 722.812,286.188 C 731.125,277.875 731.125,261.25 714.5,261.25 C 731.125,261.25 731.125,244.625 722.812,236.312 C 731.125,244.625 747.75,244.625 747.75,228z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 747.75 228 C 747.75,244.625 764.375,244.625 772.688,236.312 C 764.375,244.625 764.375,261.25 781,261.25 C 764.375,261.25 764.375,277.875 772.688,286.188 C 764.375,277.875 747.75,277.875 747.75,294.5 C 747.75,277.875 731.125,277.875 722.812,286.188 C 731.125,277.875 731.125,261.25 714.5,261.25 C 731.125,261.25 731.125,244.625 722.812,236.312 C 731.125,244.625 747.75,244.625 747.75,228"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 747.75 228 C 747.75,244.625 764.375,244.625 772.688,236.312 C 764.375,244.625 764.375,261.25 781,261.25 C 764.375,261.25 764.375,277.875 772.688,286.188 C 764.375,277.875 747.75,277.875 747.75,294.5 C 747.75,277.875 731.125,277.875 722.812,286.188 C 731.125,277.875 731.125,261.25 714.5,261.25 C 731.125,261.25 731.125,244.625 722.812,236.312 C 731.125,244.625 747.75,244.625 747.75,228"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="739.3" y="264.1">
+    <tspan x="739.3" y="264.1">JIT</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="512.3" y="190.2" width="117" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="512.3" y="190.2" width="117" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="533.3" y="213.7">
+    <tspan x="533.3" y="213.7">mycode.js</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 703.293,188.205 A 82.6286,82.6286 0 0 0 595,184"/>
+    <polygon style="fill: #000000" points="706.5,191.342 700.25,188.905 703.481,188.005 704.699,184.88 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="706.5,191.342 700.25,188.905 703.481,188.005 704.699,184.88 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="481.3" y="152.1">
+    <tspan x="481.3" y="152.1">polyfill</tspan>
+  </text>
+</svg>

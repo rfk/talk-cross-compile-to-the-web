@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="29cm" height="14cm" viewBox="78 103 570 277" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <rect style="fill: none; fill-opacity:0; stroke-width: 2.35099e-37; stroke: #000000" x="78" y="103.75" width="570" height="276.25"/>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="419" y="374">
+    <tspan x="419" y="374"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="704" y="388">
+    <tspan x="704" y="388"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="88" y="190" width="87" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="88" y="190" width="87" height="44"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="105" y="213.5">
+    <tspan x="105" y="213.5">PyPy.py</tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="221.3" y="189.3" width="87" height="43.7"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="221.3" y="189.3" width="87" height="43.7"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="244.3" y="214.8">
+    <tspan x="244.3" y="214.8">PyPy.c</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="333" y="223">
+    <tspan x="333" y="223"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="357" y="220">
+    <tspan x="357" y="220"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="265.8" y="211.024">
+    <tspan x="265.8" y="211.024"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="372.15" y="390.3">
+    <tspan x="372.15" y="390.3"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="270.3" y="285.524">
+    <tspan x="270.3" y="285.524"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="652.15" y="389.3">
+    <tspan x="652.15" y="389.3"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="380" y="301.3" width="106.3" height="34.45"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="380" y="301.3" width="106.3" height="34.45"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="389.6" y="323.1">
+    <tspan x="389.6" y="323.1">mycode.x86</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="433.15" y="318.524">
+    <tspan x="433.15" y="318.524"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="527" y="114" width="98" height="32"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="527" y="114" width="98" height="32"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="536.3" y="134.8">
+    <tspan x="536.3" y="134.8">mycode.py</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="431" y="135">
+    <tspan x="431" y="135"></tspan>
+  </text>
+  <g>
+    <rect style="fill: #ffffff" x="355.3" y="190.3" width="87" height="40.45"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="355.3" y="190.3" width="87" height="40.45"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="367.3" y="214.8">
+    <tspan x="367.3" y="214.8">PyPy.x86</tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="398.8" y="210.526">
+    <tspan x="398.8" y="210.526"></tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 235.067,180.34 A 48.5233,48.5233 0 0 0 156,187"/>
+    <polygon style="fill: #000000" points="237.813,183.855 232.085,180.363 235.424,180.041 237.17,177.178 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="237.813,183.855 232.085,180.363 235.424,180.041 237.17,177.178 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="174.5" y="154.5">
+    <tspan x="174.5" y="154.5">rpython</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 369.975,182.398 A 53.3447,53.3447 0 0 0 287,184.75"/>
+    <polygon style="fill: #000000" points="372.771,185.882 366.967,182.519 370.297,182.123 371.979,179.221 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="372.771,185.882 366.967,182.519 370.297,182.123 371.979,179.221 "/>
+  </g>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 475,240 A 46.3913,46.3913 0 0 0 424.5,286.335"/>
+    <polygon style="fill: #000000" points="424.673,290.788 420.827,285.292 424.014,286.336 426.762,284.413 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="424.673,290.788 420.827,285.292 424.014,286.336 426.762,284.413 "/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="383" y="147">
+    <tspan x="383" y="147"></tspan>
+  </text>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="310.8" y="153.8">
+    <tspan x="310.8" y="153.8">clang</tspan>
+  </text>
+  <g>
+    <line style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" x1="576" y1="146" x2="565.778" y2="165.72"/>
+    <polygon style="fill: #000000" points="563.707,169.715 563.805,163.007 565.778,165.72 569.132,165.769 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="563.707,169.715 563.805,163.007 565.778,165.72 569.132,165.769 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 504.821 171.7 L 581.963,171.7 L 597.392,206.7 L 581.963,241.7 L 504.821,241.7 L 489.392,206.7 L 504.821,171.7z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 504.821 171.7 L 581.963,171.7 L 597.392,206.7 L 581.963,241.7 L 504.821,241.7 L 489.392,206.7 L 504.821,171.7"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="543.392" y="210.7">
+      <tspan x="543.392" y="210.7"></tspan>
+    </text>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="534.992" y="209.7">
+    <tspan x="534.992" y="209.7">OS</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 492.056,175.114 A 43.153,43.153 0 0 0 420.334,184.722"/>
+    <polygon style="fill: #000000" points="494.822,178.599 489.112,175.079 492.452,174.774 494.212,171.919 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="494.822,178.599 489.112,175.079 492.452,174.774 494.212,171.919 "/>
+  </g>
+  <g>
+    <path style="fill: #ffffff" d="M 515.818 208.718 C 515.818,224.968 532.068,224.968 540.193,216.843 C 532.068,224.968 532.068,241.218 548.318,241.218 C 532.068,241.218 532.068,257.468 540.193,265.593 C 532.068,257.468 515.818,257.468 515.818,273.718 C 515.818,257.468 499.568,257.468 491.443,265.593 C 499.568,257.468 499.568,241.218 483.318,241.218 C 499.568,241.218 499.568,224.968 491.443,216.843 C 499.568,224.968 515.818,224.968 515.818,208.718z"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 515.818 208.718 C 515.818,224.968 532.068,224.968 540.193,216.843 C 532.068,224.968 532.068,241.218 548.318,241.218 C 532.068,241.218 532.068,257.468 540.193,265.593 C 532.068,257.468 515.818,257.468 515.818,273.718 C 515.818,257.468 499.568,257.468 491.443,265.593 C 499.568,257.468 499.568,241.218 483.318,241.218 C 499.568,241.218 499.568,224.968 491.443,216.843 C 499.568,224.968 515.818,224.968 515.818,208.718"/>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" d="M 515.818 208.718 C 515.818,224.968 532.068,224.968 540.193,216.843 C 532.068,224.968 532.068,241.218 548.318,241.218 C 532.068,241.218 532.068,257.468 540.193,265.593 C 532.068,257.468 515.818,257.468 515.818,273.718 C 515.818,257.468 499.568,257.468 491.443,265.593 C 499.568,257.468 499.568,241.218 483.318,241.218 C 499.568,241.218 499.568,224.968 491.443,216.843 C 499.568,224.968 515.818,224.968 515.818,208.718"/>
+  </g>
+  <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:700" x="507.318" y="243.918">
+    <tspan x="507.318" y="243.918">JIT</tspan>
+  </text>
+  <g>
+    <path style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 4; stroke: #000000" d="M 495.14,334.11 A 73.7164,73.7164 0 0 0 556.726,267.71"/>
+    <polygon style="fill: #000000" points="557.011,263.236 560.039,269.222 557.032,267.736 554.039,269.25 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="557.011,263.236 560.039,269.222 557.032,267.736 554.039,269.25 "/>
+  </g>
+</svg>

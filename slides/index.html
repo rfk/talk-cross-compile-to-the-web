@@ -1,0 +1,1245 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=1024, user-scalable=no">
+
+  <title>Cross-Compiling Code for the Web</title>
+
+  <link rel="stylesheet" media="screen" href="deck.js/core/deck.core.css">
+  <link rel="stylesheet" media="screen" href="deck.js/themes/mozilla/sandstone.default.css">
+  <link rel="stylesheet" href="playitagainsam-js/playitagainsam.css">
+
+  <script src="deck.js/modernizr.custom.js"></script>
+  <script src="deck.js/jquery.min.js"></script>
+  <script src="deck.js/core/deck.core.js"></script>
+
+  <script src="pypyjs/lib/Promise.min.js"></script>
+  <script src="pypyjs/lib/pypy.js"></script>
+  <script src="pypyjs/jquery-migrate-1.2.1.min.js"></script>
+  <script src="pypyjs/jqconsole.min.js"></script>
+  <script src="playitagainsam-js/playitagainsam.js"></script>
+
+  <style>
+  body {
+    overflow: hidden;
+  }
+  body .pias-container iframe {
+    margin: 1em;
+    background: white;
+  }
+  .deck-container .slide {
+    font-size: 1.3em;
+    padding: 1em;
+    padding-top: 0.6em;
+    border: none;
+  }
+  .deck-container .slide h1 {
+    font-size: 2.5em;
+    text-align: center;
+  }
+  .deck-container .slide h1 .h1sub {
+    font-size: 0.5em;
+  }
+  .deck-container .slide h2 {
+    padding-left: 1.3em;
+  }
+  .deck-container .slide blockquote {
+    font-size: 1em;
+  }
+  .deck-container .slide table {
+    font-size: 1em;
+  }
+  .deck-container .slide td {
+    padding: 1em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;
+  }
+  .deck-container .slide td + td {
+    text-align: right;
+  }
+  .deck-container .slide .venn-diagram {
+    text-align: center;
+    margin-top: 0.5em;
+    width: 70%;
+  }
+  .deck-container .slide .flow-diagram {
+    text-align: center;
+    width: 80%;
+  }
+
+  .fullscreener {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: white;
+    height: 10px;
+    width: 10px;
+    opacity: 0.1;
+  }
+  .run-timer {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: black;
+    height: 5px;
+    width: 10px;
+    opacity: 0.5;
+  }
+  .run-timer-slow-down {
+    background: blue;
+  }
+  .run-timer-on-track {
+    background: green;
+  }
+  .run-timer-move-on {
+    background: orange;
+  }
+  .run-timer-hurry-up {
+    background: red;
+  }
+  .deck-container .console {
+    padding: 0.1em;
+    width: 100%;
+    text-align: center;
+  }
+  #console {
+    position: relative;
+    margin: 1em;
+    width: 90%;
+    height: 380px;
+    text-align: left;
+    background-color: white;
+    border: 1px solid #333;
+    font-size: 1em;
+  }
+  .jqconsole {
+      padding: 10px;
+  }
+  .jqconsole-cursor {
+      background-color: gray;
+  }
+  .jqconsole-blurred .jqconsole-cursor {
+      background-color: #333;
+  }
+  .jqconsole-prompt {
+      color: black;
+  }
+  .jqconsole-old-prompt {
+      color: black;
+      font-weight: normal;
+  }
+  .jqconsole-input {
+      color: black;
+  }
+  .jqconsole-old-input {
+      color: #bb0;
+      font-weight: normal;
+  }
+  .jqconsole-output {
+      color: #444;
+  }
+.deck-container > .slide {
+  page-break-after: always;
+}
+  </style>
+
+<script>
+  $(function () {
+    window.vms = {};
+    window.jqconsole = $('#console').jqconsole('', '>>> ');
+    window.stdout = window.stderr = function(data) {
+      jqconsole.Write(data, 'jqconsole-output');
+    }
+    window.devnull = function(data) { };
+    jqconsole.Reset();
+    jqconsole.CurrentlyActiveVM = null;
+    jqconsole.ActivateVM = function(vm) {
+      if (jqconsole.CurrentlyActiveVM) {
+        jqconsole.CurrentlyActiveVM.stdout = window.devnull;
+        jqconsole.CurrentlyActiveVM.stderr = window.devnull;
+      }
+      if (vm) {
+        vm.stdout = window.stdout;
+        vm.stderr = window.stderr;
+      }
+      jqconsole.CurrentlyActiveVM = vm;
+      jqconsole.SetPromptLabel(vm.defaultPromptLabel);
+      jqconsole.Reset();
+      vm.ready.then(function() {
+        jqconsole.Focus();
+        jqconsole.DoPromptLoop();
+      });
+    };
+    jqconsole.DoPromptLoop = function () {
+      jqconsole.Prompt(true, function (input) {
+        var vm = jqconsole.CurrentlyActiveVM;
+        vm.pushConsoleInput(input).then(function() {
+          setTimeout(jqconsole.DoPromptLoop, 0);
+        })
+      });
+    };
+    $("#console").hide();
+  });
+</script>
+
+<script>
+  // Our default VM, a vanilla pypy.js shell.
+  $(function () {
+    var vm = window.vms.pypy = new PyPyJS();
+    // Create an 'InteractiveConsole' to simulate the python shell,
+    // and pre-load some things we'll use in the demos.
+    vm.ready.then(function() {
+      var startupCode = 'import code\n' +
+                        'c = code.InteractiveConsole()\n' +
+                        'c.push("import os, sys, gc")\n' +
+                        'c.push("from binascii import hexlify")'
+      return vm.eval(startupCode)
+    });
+    // Make a nice python shell prompt in the console,
+    // including a different prompt for incomplete input.
+    vm.defaultPromptLabel = ">>> ";
+    vm.pushConsoleInput = function(input) {
+      var code = input.replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+      code = 'r = c.push(\'' + code + '\')';
+      return vm.eval(code).then(function() {
+        return vm.get('r').then(function(r) {
+          if (r) {
+            window.jqconsole.SetPromptLabel("... ");
+          } else {
+            window.jqconsole.SetPromptLabel(">>> ");
+          }
+        });
+      });
+    };
+  });
+</script>
+
+<script>
+  $(function() {
+    $.deck('.slide');
+    // Preload all images to reduce display jank
+    $('img').each(function(i, elem) {
+      var img = new Image();
+      img.src = $(elem).attr('src');
+    });
+    // Enable full-screen mode by clicking on a button.
+    $('.fullscreener').each(function(i, elem) {
+      $(elem).bind("click", function() {
+        document.body.mozRequestFullScreen();
+        $('.fullscreener').hide();
+      });
+    });
+    $(document).bind("mozfullscreenchange", function(evt) {
+      $(".fullscreener").appendTo($.deck("getSlide"));
+      if (document.mozFullScreenElement) {
+        $(".fullscreener").hide()
+      } else {
+        $(".fullscreener").show()
+      }
+    });
+    // Add ability to run callbacks on individual slides
+    var onEnterSlideCallbacks = {}
+    window.onEnterSlide = function(selector, cb) {
+      var slide_id = $(selector).attr("id");
+      if(typeof onEnterSlideCallbacks[slide_id] === "undefined") {
+          onEnterSlideCallbacks[slide_id] = [];
+      }
+      onEnterSlideCallbacks[slide_id].push(cb)
+    }
+    $(document).bind("deck.change", function(event, from, to) {
+      var $slide = $.deck("getSlide", to);
+      var slide_id = $slide.attr("id");
+      var callbacks = onEnterSlideCallbacks[slide_id];
+      if(typeof callbacks !== "undefined") {
+        for(var i=0; i<callbacks.length; i++) {
+          callbacks[i]();
+        }
+      }
+    })
+    // Bootstrap any python script tags.
+    $('script').each(function(i, elem) {
+      var $elem = $(elem);
+      if ($elem.attr('type') === 'text/python') {
+        window.vms.pypy.ready.then(function() {
+          window.vms.pypy.eval($elem.text())
+        });
+      }
+    });
+  });
+</script>
+
+</head>
+<body>
+<div class="deck-container">
+
+  <div class="run-timer"></div>
+
+  <section class="slide" style="text-align: center">
+  <div class="fullscreener">&nbsp;</div>
+  <h1>Cross-Compiling<br />Code for the Web</p></h1>
+  <p>Ryan Kelly<br />ryan@rfk.id.au</br>@rfkelly</p>
+  </section>
+
+  <section class="slide" style="text-align: center" run-time-waypoint="0">
+  <h1>Cross-Compiling<br />Code for the Web</p></h1>
+  <p>Ryan Kelly<br />ryan@rfk.id.au</br>@rfkelly</p>
+  </section>
+
+  <section class="slide">
+  <h1>Mozilla</h1>
+  </section>
+
+  <section class="slide">
+  <h1>Mozilla</h1>
+  <div style="text-align: center">
+  <img src="./img/firefox_logo-only_RGB.png" style="height: 300px; width:319" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <h1>Mozilla<br/>&#x2764<br/>The Web</h1>
+  </section>
+
+  <section class="slide" run-time-waypoint="1m">
+  <h2>The Web</h2>
+  <!-- uh-huh, table-based layout, like a boss... -->
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Technology:</b></p>
+    <ul>
+      <li>HTTP</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </td><td style="width: 30%">
+  </td><td style="text-align: left; opacity: 0;">
+    <p><b>Culture:</b></p>
+    <ul>
+      <li>Open</li>
+      <li>Ubiquitous</li>
+      <li>Secure</li>
+      <li>Trustworthy</li>
+    </ul>
+  </td><td style="width: 30%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h2>The Web</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Technology:</b></p>
+    <ul>
+      <li>HTTP</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </td><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Culture:</b></p>
+    <ul>
+      <li>Open</li>
+      <li>Ubiquitous</li>
+      <li>Secure</li>
+      <li>Trustworthy</li>
+    </ul>
+  </td><td style="width: 30%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide" run-time-waypoint="5m">
+  <h1>Open?</h1>
+  </section>
+
+  <section class="slide" id="pias-hello1-slide">
+    <div id="pias-hello1-player"> </div>
+    <script type="text/javascript" src="./demos/pias-hello1.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            onEnterSlide("#pias-hello1-slide", function() {
+                var player = new PIAS.Player($("#pias-hello1-player"))
+                player.play(window.pias_hello1_data, function() {
+                    player.destroy();
+                });
+            });
+        });
+    </script>
+  </section>
+
+  <section class="slide">
+    <h1><a href="./demos/luv/hello_0.html" target="_blank">demo</a></h1>
+  </section>
+
+  <section class="slide">
+  <h2>Open Cultere, Closed Technology?</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Technology:</b></p>
+    <ul>
+      <li>HTTP</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </td><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Culture:</b></p>
+    <ul>
+      <li>Open</li>
+      <li>Ubiquitous</li>
+      <li>Secure</li>
+      <li>Trustworthy</li>
+    </ul>
+  </td><td style="width: 30%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h1>Cross-Compile<br />to the Web?</h1>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/native_flow/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/native_flow/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/native_flow/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <!-- -->
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <!-- -->
+
+  <section class="slide" run-time-waypoint="8m">
+  <h1>The Past</h1>
+  </section>
+
+  <section class="slide">
+  <h2>In the Beginning</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <p><b>Java:</b></p>
+    <ul>
+      <li>Programming Language</li>
+      <li>For Real Programmers</li>
+      <li>Serious Business</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <p><b>JavaScript:</b></p>
+    <ul>
+      <li>Scripting Language</li>
+      <li>For Dabblers</li>
+      <li>Lightweight Glue</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h1>Compiler Target<br />==<br />Serious Business</h1>
+  </section>
+
+  <!-- -->
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_plugin/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_plugin/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_plugin/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_plugin/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_plugin/flow_diagram_4.svg" />
+  </div>
+  </section>
+
+  <!-- -->
+
+  <section class="slide">
+  <h2>JavaScript: not good enough</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>Java?</li>
+      <li>Flash?</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>ActiveX?</li>
+      <li>Portable Native Client?</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h1>None really stuck</h1>
+  </section>
+
+  <section class="slide">
+  <h2>They weren't "Of the Web"</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Technology:</b></p>
+    <ul>
+      <li>HTTP</li>
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+    </ul>
+  </td><td style="width: 30%">
+  </td><td style="text-align: left;">
+    <p><b>Culture:</b></p>
+    <ul>
+      <li>Open</li>
+      <li>Ubiquitous</li>
+      <li>Secure</li>
+      <li>Trustworthy</li>
+    </ul>
+  </td><td style="width: 30%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide" run-time-waypoint="10m">
+  <h1>Meanwhile...</h1>
+  </section>
+
+  <section class="slide">
+  <h2>JavaScript: not good enough?</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left; vertical-align: top">
+    <p>Features:</p>
+    <ul>
+      <li>Canvas</li>
+      <li>WebGL</li>
+      <li>WebAudio</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left; vertical-align: top;">
+    <p>Speed:</p>
+    <ul>
+      <li>TraceMonkey, V8, Nitro, ...</li>
+      <li>SunSpider, Kraken, Octane, ...</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h2>JavaScript: sometimes good enough!</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>OpenLaszlo</li>
+      <li>Google Web Toolkit</li>
+      <li>Mandreel</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>Pyjamas</li>
+      <li>Haxe</li>
+      <li>Emscripten</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_js/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_we_want_js/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <!--  -->
+
+  <section class="slide" run-time-waypoint="12m">
+  <h1>The Present</h1>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <p>&nbsp;</p>
+  <img src="./img/Emscripten_logo_full.png" style="width: 700"/>
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_emscripten/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_emscripten/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide" id="pias-hello-emcc-slide">
+    <div id="pias-hello-emcc-player"> </div>
+    <script type="text/javascript" src="./demos/pias-hello-emcc.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            onEnterSlide("#pias-hello-emcc-slide", function() {
+                var player = new PIAS.Player($("#pias-hello-emcc-player"))
+                player.play(window.pias_hello_emcc_data, function() {
+                    player.destroy();
+                });
+            });
+        });
+    </script>
+  </section>
+
+  <section class="slide">
+    <h1><a href="./demos/luv/hello.html" target="_blank">demo</a></h1>
+  </section>
+
+  <section class="slide" id="pias-hello-emcc2-slide">
+    <div id="pias-hello-emcc2-player"> </div>
+    <script type="text/javascript" src="./demos/pias-hello-emcc2.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            onEnterSlide("#pias-hello-emcc2-slide", function() {
+                var player = new PIAS.Player($("#pias-hello-emcc2-player"))
+                player.play(window.pias_hello_emcc2_data, function() {
+                    player.destroy();
+                });
+            });
+        });
+    </script>
+  </section>
+
+  <section class="slide">
+    <h1><a href="./demos/luv/hello2.html" target="_blank">demo</a></h1>
+  </section>
+
+  <section class="slide" id="pias-emcc-gears-slide">
+    <div id="pias-emcc-gears-player"> </div>
+    <script type="text/javascript" src="./demos/pias-emcc-gears.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            onEnterSlide("#pias-emcc-gears-slide", function() {
+                var player = new PIAS.Player($("#pias-emcc-gears-player"))
+                player.play(window.pias_emcc_gears_data, function() {
+                    player.destroy();
+                });
+            });
+        });
+    </script>
+  </section>
+
+  <section class="slide">
+    <h1><a href="./demos/luv/gears.html" target="_blank">demo</a></h1>
+  </section>
+
+  <section class="slide" run-time-waypoint="14m">
+  <h2>Emscripten:</h2>
+  <ul>
+  <li>An LLVM backend that generates JavaScript</li>
+  <li>A simulated POSIX environment (in JavaScript)</li>
+  <li>SDL, OpenGL implementations (in JavaScript)</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+  <h1>You still<br />have to "port"</h1>
+  </section>
+
+  <section class="slide">
+    <h1><a href="http://coolwanglu.github.io/vim.js/emterpreter/vim.html" target="_blank">demo: vim</a></h1>
+  </section>
+
+  <section class="slide">
+    <h1><a href="https://archive.org/details/software" target="_blank">demo: archive.org</a></h1>
+  </section>
+
+  <section class="slide">
+    <h1><a href="https://developer.cdn.mozilla.net/media/uploads/demos/a/z/azakai/3baf4ad7e600cbda06ec46efec5ec3b8/bananabread_1424465008_demo_package/game.html?low,low" target="_blank">demo: shootin' stuff</a></h1>
+  </section>
+
+  <section class="slide">
+  <h1>Surprising?</h1>
+  </section>
+
+  <section class="slide">
+  <h1>Surprising<br />that it's fast</h1>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_browser_jit/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_browser_jit/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_browser_jit/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_browser_jit/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_browser_jit/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="20m">
+  <h1>asm.js</h1>
+  </section>
+
+  <section class="slide">
+  <h2>asm.js</h2>
+  <blockquote>"An extraordinarily optimizable, low-level subset of JavaScript"</blockquote>
+  </section>
+
+  <section class="slide">
+  small example
+  </section>
+
+  <section class="slide" run-time-waypoint="25m">
+  <h2>Formalizing asm.js paid off:</h2>
+  <ul>
+  <li>Deterministic ahead-of-time-compilation</li>
+  <li>Other browsers can target it as input</li>
+  <li>Other tools can target it as output</li>
+  </ul>
+  </section>
+
+  <!-- -->
+
+  <section class="slide">
+  <h1>PyPy.js</h1>
+  </section>
+
+  <section class="slide">
+  <h1>PyPy.js =<br />PyPy + Emscripten</h1>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_6.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_5.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_4.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypy_flow/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <!--  -->
+
+  <section class="slide">
+  <h2>PyPy.js:</h2>
+  <div class="pyconsole"></div>
+  </section>
+
+  <!-- -->
+
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_11.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_10.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_9.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_8.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_7.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_6.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_5.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_4.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide" run-time-waypoint="28m">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+  <!--  -->
+
+  <section class="slide" run-time-waypoint="30m">
+  <h1>The Future</h1>
+  </section>
+
+  <section class="slide">
+  <h2>asm.js: <i>almost</i> good enough</h2>
+  <ul>
+  <li>Inefficient text-based representation</li>
+  <li>Restricted interaction with host environment</li>
+  <li>Fixed-size memory heap</li>
+  <li>No threads, no SIMD, ...</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+  <h1>WebAssembly</h1>
+  </section>
+
+  <section class="slide">
+  <h2>WebAssembly</h2>
+  <ul>
+  <li>An abstract semantics for the asm.js syntax tree</li>
+  <li>An efficient binary encoding of that syntax tree</li>
+  <li>An ambitious plan to take it into the future</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_11.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_10.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_9.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_8.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_7.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_6.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_5.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_4.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_3.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_2.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_1.svg" />
+  </div>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+  <img class="flow-diagram" src="./img/flow_webassembly/flow_diagram_0.svg" />
+  </div>
+  </section>
+
+
+  <!-- -->
+
+  <section class="slide">
+  <h2>In the End?</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <p><b>WebAssembly:</b></p>
+    <ul>
+      <li>Low-Level Language</li>
+      <li>For Machines</li>
+      <li>Raw Speed</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <p><b>JavaScript:</b></p>
+    <ul>
+      <li>High-Level Language</li>
+      <li>For People</li>
+      <li>Flexibility</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
+  </section>
+
+  <section class="slide">
+  <h2>In the End?</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <p><b>WebAssembly:</b></p>
+    <ul>
+      <li>Low-Level Language</li>
+      <li>For Machines</li>
+      <li>Raw Speed</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <p><b>JavaScript:</b></p>
+    <ul>
+      <li>High-Level Language</li>
+      <li>For People</li>
+      <li>Flexibility</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  <tr><td></td><td colspan="3" style="text-align: center; border-top: dotted 1px">Common Foundation</td><td></td></tr>
+  </table>
+  </section>
+
+  <section class="slide" run-time-waypoint="36m">
+  <h2>Lessons?</h2>
+  <ul>
+  <li>The Web resists big-design-up-front</li>
+  <li>It evolves incrementally, for better or worse</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+  <h2>Lessons?</h2>
+  <ul>
+  <li>The Web resists big-design-up-front</li>
+  <li>It evolves incrementally, for better or worse</li>
+  <li>"Always bet on JS"</li>
+  </ul>
+  </section>
+
+  <section class="slide">
+  <h2>Lessons?</h2>
+  <ul>
+  <li>The Web resists big-design-up-front</li>
+  <li>It evolves incrementally, for better or worse</li>
+  <li>"JS finds a way"</li>
+  </ul>
+  </section>
+
+  <!--  -->
+
+  <section class="slide" run-time-waypoint="40m">
+  <h1>Thanks!</h1>
+  </section>
+
+  <section class="slide">
+  <div style="text-align: center">
+    <br/>
+    <p>http://emscripten.org/</p>
+    <p>http://asmjs.org/</p>
+    <p>https://github.com/webassembly/</p>
+    <br/>
+    <p>ryan@rfk.id.au</p>
+    <p>@rfkelly</p>
+  </div>
+  </section>
+
+  <!--  -->
+
+<script type="text/python">
+
+import js
+import time
+
+jq = js.globals["$"]
+
+slide = None
+allSlides = jq(".slide")
+talkStartTime = None
+
+
+@js.Function
+def onDeckChange(event, frm, to):
+    global slide
+    slide = jq.deck("getSlide", to)
+    jq(".fullscreener").appendTo(slide)
+    # Display appropriate VM console for the new slide.
+    py_console = slide.find(".pyconsole")
+    py3k_console = slide.find(".py3kconsole")
+    pr_console = slide.find(".prconsole")
+    if py_console.length > 0:
+        jq("#console").appendTo(py_console).show()
+        js.globals.jqconsole.ActivateVM(js.globals.vms.pypy)
+    elif py3k_console.length > 0:
+        jq("#console").appendTo(py3k_console).show()
+        js.globals.jqconsole.ActivateVM(js.globals.vms.py3k)
+    elif pr_console.length > 0:
+        jq("#console").appendTo(pr_console).show()
+        js.globals.jqconsole.ActivateVM(js.globals.vms.pyrolog)
+    else:
+        jq("#console").hide()
+        jq(js.globals.document).click()
+    updateRunTimer()
+
+
+@js.Function
+def updateRunTimer():
+    global talkStartTime
+    # Clear previous status, if any.
+    runTimer = jq(".run-timer")
+    runTimer.removeClass("run-timer-slow-down")
+    runTimer.removeClass("run-timer-on-track")
+    runTimer.removeClass("run-timer-move-on")
+    runTimer.removeClass("run-timer-hurry-up")
+    # Find the index of the current slide, the slow-but-simple way.
+    if slide is None or not slide.length:
+        return
+    curpos = 0
+    while curpos < allSlides.length:
+        if allSlides[str(curpos)] == slide["0"]:
+            break
+        curpos += 1
+    # Find the previous slide with waypoint set; this is the min runtime.
+    i = curpos - 1
+    runTimeMin = slide.attr("run-time-waypoint")
+    while runTimeMin == js.undefined and i >= 0:
+        runTimeMin = allSlides.eq(i).attr("run-time-waypoint")
+        i -= 1
+    # Find the next slide with waypoint set; this is the max runtime.
+    runTimeMax = js.undefined
+    i = curpos + 1
+    while runTimeMax == js.undefined and i < allSlides.length:
+        runTimeMax = allSlides.eq(i).attr("run-time-waypoint")
+        i += 1
+    # Tweak status of runtime tracker accordingly.
+    # If we're on the first slide we reset to zero, otherwise we
+    # adjust its class based on where we are in the runtime bound.
+    if slide["0"] == allSlides["0"]:
+        talkStartTime = None
+    else:
+        if talkStartTime is None:
+            talkStartTime = int(time.time())
+        runTime = int(time.time()) - talkStartTime;
+        runTimeMin = parseRunTimeWaypoint(runTimeMin)
+        runTimeMax = parseRunTimeWaypoint(runTimeMax)
+        if runTimeMin and runTime < runTimeMin:
+            runTimer.addClass("run-timer-slow-down")
+        elif runTimeMax and runTime >= runTimeMax:
+            runTimer.addClass("run-timer-hurry-up")
+        elif runTimeMax and runTime >= runTimeMax - 20:
+            runTimer.addClass("run-timer-move-on")
+        else:
+            runTimer.addClass("run-timer-on-track")
+
+
+def parseRunTimeWaypoint(waypoint):
+    waypoint = str((waypoint or "")).strip()
+    if "m" in waypoint:
+        mins, secs = waypoint.split("m", 1)
+    else:
+        mins = ""
+        secs = waypoint
+    return int(secs or "0") + int(mins or "0") * 60
+
+try:
+    assert parseRunTimeWaypoint("0") == 0
+    assert parseRunTimeWaypoint("01m05") == 65
+    assert parseRunTimeWaypoint("2m12") == 132
+    assert parseRunTimeWaypoint("15m") == 900
+    assert parseRunTimeWaypoint("180") == 180
+    runTimes = []
+    for i in xrange(allSlides.length):
+        rt = allSlides.eq(i).attr("run-time-waypoint")
+        if rt != js.undefined:
+            runTimes.append(parseRunTimeWaypoint(str(rt)))
+    if runTimes[0] != 0:
+        js.globals.console.error("timers dont start at zero")
+    if runTimes[-1] != 40 * 60:
+        js.globals.console.error("timers dont end at 40")
+    for i in xrange(1, len(runTimes)):
+        if runTimes[i] <= runTimes[i - 1]:
+            js.globals.console.error("time decrease at " + str(i))
+            js.globals.console.error("%s -> %s" % (runTimes[i-1], runTimes[i]))
+except Exception as e:
+    js.globals.console.log("ERROR")
+    js.globals.console.log(str(e))
+    raise
+
+jq(js.globals.document).bind("deck.change", onDeckChange)
+
+js.globals.setInterval(updateRunTimer, 5 * 1000)
+
+</script>
+
+<div id="console" style="display: hidden"></div>
+
+</div>
+</body>

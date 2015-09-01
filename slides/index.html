@@ -67,6 +67,12 @@
     text-align: center;
     width: 80%;
   }
+  .deck-container .slide .code {
+    margin-left: 4em;
+  }
+  .deck-container .slide .highlight {
+    color: red;
+  }
 
   .fullscreener {
     position: absolute;
@@ -376,7 +382,7 @@
   </section>
 
   <section class="slide">
-  <h2>Open Cultere, Closed Technology?</h2>
+  <h2>Open Culture, Closed Technology?</h2>
   <table style="border: none; width: 100%">
   <tr><td style="width: 30%">
   </td><td style="text-align: left;">
@@ -444,7 +450,7 @@
 
   <!-- -->
 
-  <section class="slide" run-time-waypoint="8m">
+  <section class="slide" run-time-waypoint="7m">
   <h1>The Past</h1>
   </section>
 
@@ -473,6 +479,25 @@
 
   <section class="slide">
   <h1>Compiler Target<br />==<br />Serious Business</h1>
+  </section>
+
+  <section class="slide">
+  <h2>JavaScript: not good enough</h2>
+  <table style="border: none; width: 100%">
+  <tr><td style="width: 10%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>Java?</li>
+      <li>Flash?</li>
+    </ul>
+  </td><td style="width: 3%">
+  </td><td style="text-align: left;">
+    <ul>
+      <li>ActiveX?</li>
+      <li>Portable Native Client?</li>
+    </ul>
+  </td><td style="width: 10%"> </td></tr>
+  </table>
   </section>
 
   <!-- -->
@@ -510,25 +535,6 @@
   <!-- -->
 
   <section class="slide">
-  <h2>JavaScript: not good enough</h2>
-  <table style="border: none; width: 100%">
-  <tr><td style="width: 10%">
-  </td><td style="text-align: left;">
-    <ul>
-      <li>Java?</li>
-      <li>Flash?</li>
-    </ul>
-  </td><td style="width: 3%">
-  </td><td style="text-align: left;">
-    <ul>
-      <li>ActiveX?</li>
-      <li>Portable Native Client?</li>
-    </ul>
-  </td><td style="width: 10%"> </td></tr>
-  </table>
-  </section>
-
-  <section class="slide">
   <h1>None really stuck</h1>
   </section>
 
@@ -557,7 +563,7 @@
   </table>
   </section>
 
-  <section class="slide" run-time-waypoint="10m">
+  <section class="slide" run-time-waypoint="9">
   <h1>Meanwhile...</h1>
   </section>
 
@@ -618,7 +624,7 @@
 
   <!--  -->
 
-  <section class="slide" run-time-waypoint="12m">
+  <section class="slide" run-time-waypoint="11m">
   <h1>The Present</h1>
   </section>
 
@@ -698,7 +704,7 @@
     <h1><a href="./demos/luv/gears.html" target="_blank">demo</a></h1>
   </section>
 
-  <section class="slide" run-time-waypoint="14m">
+  <section class="slide">
   <h2>Emscripten:</h2>
   <ul>
   <li>An LLVM backend that generates JavaScript</li>
@@ -707,8 +713,8 @@
   </ul>
   </section>
 
-  <section class="slide">
-  <h1>You still<br />have to "port"</h1>
+  <section class="slide" run-time-waypoint="15m">
+  <h1>You still have<br />to port</h1>
   </section>
 
   <section class="slide">
@@ -723,7 +729,7 @@
     <h1><a href="https://developer.cdn.mozilla.net/media/uploads/demos/a/z/azakai/3baf4ad7e600cbda06ec46efec5ec3b8/bananabread_1424465008_demo_package/game.html?low,low" target="_blank">demo: shootin' stuff</a></h1>
   </section>
 
-  <section class="slide">
+  <section class="slide" run-time-waypoint="18m">
   <h1>Surprising?</h1>
   </section>
 
@@ -771,10 +777,79 @@
   </section>
 
   <section class="slide">
-  small example
+  <pre class="code">function cos_a_lot(n, i) {</pre>
+  <pre class="code">    while (i &gt; 0) {</pre>
+  <pre class="code">        n = Math.cos(n)</pre>
+  <pre class="code">        i = i - 1</pre>
+  <pre class="code">    }</pre>
+  <pre class="code">    return n</pre>
+  <pre class="code">}</pre>
   </section>
 
-  <section class="slide" run-time-waypoint="25m">
+  <section class="slide">
+  <pre class="code">function cos_a_lot(n, i) {</pre>
+  <pre class="code"> </pre>
+  <pre class="code"> </pre>
+  <pre class="code">    while (i &gt; 0) {</pre>
+  <pre class="code">        n = Math.cos(n)</pre>
+  <pre class="code">        i = i - 1</pre>
+  <pre class="code">    }</pre>
+  <pre class="code">    return n</pre>
+  <pre class="code">}</pre>
+  </section>
+
+  <section class="slide">
+  <pre class="code">function cos_a_lot(n, i) {</pre>
+  <pre class="code"> </pre>
+  <pre class="code highlight">    var cos = Math.cos</pre>
+  <pre class="code">    while (i &gt; 0) {</pre>
+  <pre class="code highlight">        n = cos(n)</pre>
+  <pre class="code">        i = i - 1</pre>
+  <pre class="code">    }</pre>
+  <pre class="code">    return n</pre>
+  <pre class="code">}</pre>
+  </section>
+
+  <section class="slide">
+  <pre class="code">function cos_a_lot(n, i) {</pre>
+  <pre class="code highlight">    n = +n; i = i|0</pre>
+  <pre class="code">    var cos = Math.cos</pre>
+  <pre class="code">    while (i &gt; 0) {</pre>
+  <pre class="code">        n = cos(n)</pre>
+  <pre class="code">        i = i - 1</pre>
+  <pre class="code">    }</pre>
+  <pre class="code">    return n</pre>
+  <pre class="code">}</pre>
+  </section>
+
+  <section class="slide">
+  <pre class="code">function cos_a_lot(n, i) {</pre>
+  <pre class="code">    n = +n; i = i|0</pre>
+  <pre class="code">    var cos = Math.cos</pre>
+  <pre class="code">    while (i &gt; 0) {</pre>
+  <pre class="code highlight">        n = +cos(n)</pre>
+  <pre class="code highlight">        i = (i - 1)|0</pre>
+  <pre class="code">    }</pre>
+  <pre class="code">    return n</pre>
+  <pre class="code">}</pre>
+  </section>
+
+  <section class="slide" id="pias-asmjs-slide">
+    <div id="pias-asmjs-player"> </div>
+    <script type="text/javascript" src="./demos/pias-asmjs.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            onEnterSlide("#pias-asmjs-slide", function() {
+                var player = new PIAS.Player($("#pias-asmjs-player"))
+                player.play(window.pias_asmjs_data, function() {
+                    player.destroy();
+                });
+            });
+        });
+    </script>
+  </section>
+
+  <section class="slide">
   <h2>Formalizing asm.js paid off:</h2>
   <ul>
   <li>Deterministic ahead-of-time-compilation</li>
@@ -785,12 +860,12 @@
 
   <!-- -->
 
-  <section class="slide">
+  <section class="slide" run-time-waypoint="25m">
   <h1>PyPy.js</h1>
   </section>
 
   <section class="slide">
-  <h1>PyPy.js =<br />PyPy + Emscripten</h1>
+  <h1>PyPy.js<br />=<br />PyPy + Emscripten</h1>
   </section>
 
   <section class="slide">
@@ -851,67 +926,67 @@
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_10.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_9.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_8.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_7.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_6.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_5.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_4.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_3.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_2.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_1.svg" />
   </div>
   </section>
 
-  <section class="slide" run-time-waypoint="28m">
+  <section class="slide">
   <div style="text-align: center">
   <img class="flow-diagram" src="./img/pypyjs_flow/flow_diagram_0.svg" />
   </div>

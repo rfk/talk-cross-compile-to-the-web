@@ -1343,17 +1343,7 @@ var pias_hello1_data = {
     }, 
     {
       "act": "ECHO", 
-      "data": "o he", 
-      "term": "69cc986a81d24bfb8ca98f9de92c8046"
-    }, 
-    {
-      "act": "READ", 
-      "data": "\t", 
-      "term": "69cc986a81d24bfb8ca98f9de92c8046"
-    }, 
-    {
-      "act": "WRITE", 
-      "data": "\u0007llo", 
+      "data": "o hello.exe", 
       "term": "69cc986a81d24bfb8ca98f9de92c8046"
     }, 
     {
@@ -1388,7 +1378,7 @@ var pias_hello1_data = {
     }, 
     {
       "act": "READ", 
-      "data": "\u0003", 
+      "data": "\r", 
       "term": "69cc986a81d24bfb8ca98f9de92c8046"
     }, 
     {
